@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,16 +14,16 @@
 
 <body class="bg-light">
 
+    @include('partials.nav')
+
     <div class="container py-4">
 
-        <h1 class="fw-bold mb-3">
-            My Book Library
-        </h1>
-
-        @include('partials._nav')
-
         @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>@endif
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         @yield('content')
 
     </div>

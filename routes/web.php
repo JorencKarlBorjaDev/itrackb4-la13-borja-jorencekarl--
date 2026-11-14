@@ -2,18 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-
-    return view('welcome');
-
-});
-
-Route::get('/whoami', function () {
-
-    return 'Jorence Karl Borja | 2023-70383 | Block 4C | ITRACKB4 Laravel 12';
-
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/books/featured', [BookController::class, 'featured'])
     ->name('books.featured');

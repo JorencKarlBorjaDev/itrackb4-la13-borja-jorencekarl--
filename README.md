@@ -52,3 +52,11 @@ H1. The error page showed a file inside the vendor folder because Laravel detect
 H2. My `Log::info()` line helps me check which book was saved by showing its actual ID. Even next month, I can look at `laravel.log` to know which book was added, something the error page cannot tell me.
 
 H3. Using 403 is better when I want to completely prevent an action, like deleting the last book in a genre. Redirecting back with a message is better when the user can still continue using the page and just needs to know why the action was not completed.
+
+Lab 13
+
+J1. I used a HomeController because the homepage only displays a summary of the library. It does not need the usual CRUD operations like adding, editing, or deleting books.
+
+J2. It keeps my search, filter, and sorting values when I move to another page. Without it, those values disappear when I click the pagination links.
+
+J3. I used a whitelist to allow only title and year as sorting options. This prevents invalid values from the URL from causing errors, and it uses title sorting as the default.
