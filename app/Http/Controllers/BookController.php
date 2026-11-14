@@ -50,7 +50,8 @@ class BookController extends Controller
             'genreId',
             'isAvailable',
             'year',
-            'genres'
+            'genres',
+            'sort'
         ));
     }
 
