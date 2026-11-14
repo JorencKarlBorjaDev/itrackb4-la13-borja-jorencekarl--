@@ -9,12 +9,10 @@
 
     <div class="card-body p-4">
 
-        <h2 class="h5 text-muted text-uppercase fw-semibold mb-1">Books List</h2>
-        <h2 class="text-secondary small mb-4">Prepared by: Jorence Karl Borja</h2>
 
         <a href="{{ route('books.create') }}" class="btn btn-primary mb-3">+ Add Book</a>
 
-        {{-- Part H: Search and Filter Form --}}
+       
         <form method="GET" action="{{ route('books.index') }}" class="row g-2 mb-4">
 
             <div class="col-md-3">
@@ -50,7 +48,7 @@
                 </select>
             </div>
 
-            {{-- Part I: Sort Dropdown --}}
+        
             <div class="col-md-2">
                 <select name="sort" class="form-select">
                     <option value="title" @selected(request('sort', 'title') === 'title')>
@@ -68,52 +66,6 @@
             </div>
 
         </form>
-
-        <p class="mb-3">
-            <strong class="me-2 text-dark">Genre:</strong>
-
-            @foreach ($genres as $genreOption)
-                <a href="{{ route('books.index', ['genre_id' => $genreOption->id, 'year' => $year]) }}"
-                   class="btn btn-sm btn-outline-primary rounded-pill me-1">
-                    {{ $genreOption->name }}
-                </a>
-            @endforeach
-        </p>
-
-        <p class="mb-3">
-            <strong class="me-2 text-dark">Year:</strong>
-
-            <a href="{{ route('books.index', ['genre_id' => $genreId, 'year' => 1861]) }}" class="btn btn-sm btn-outline-secondary rounded-pill me-1">1861</a>
-            <a href="{{ route('books.index', ['genre_id' => $genreId, 'year' => 1939]) }}" class="btn btn-sm btn-outline-secondary rounded-pill me-1">1939</a>
-            <a href="{{ route('books.index', ['genre_id' => $genreId, 'year' => 2012]) }}" class="btn btn-sm btn-outline-secondary rounded-pill me-1">2012</a>
-            <a href="{{ route('books.index', ['genre_id' => $genreId, 'year' => 1812]) }}" class="btn btn-sm btn-outline-secondary rounded-pill me-1">1812</a>
-            <a href="{{ route('books.index', ['genre_id' => $genreId, 'year' => 1941]) }}" class="btn btn-sm btn-outline-secondary rounded-pill me-1">1941</a>
-            <a href="{{ route('books.index', ['genre_id' => $genreId, 'year' => 1869]) }}" class="btn btn-sm btn-outline-secondary rounded-pill">1869</a>
-        </p>
-
-        <p class="mb-4">
-            <a href="{{ route('books.index') }}" class="btn btn-sm btn-link text-danger text-decoration-none p-0">
-                Clear filters
-            </a>
-        </p>
-
-        <p class="bg-light p-3 rounded-3 border mb-4">
-            <strong class="text-dark me-2">Showing:</strong>
-
-            @if ($genreId)
-                <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Genre = {{ $genres->firstWhere('id', $genreId)?->name ?? 'None' }}</span>
-            @else
-                <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Genre = None</span>
-            @endif
-
-            ,
-
-            @if ($year)
-                <span class="badge bg-primary-subtle text-primary border border-primary-subtle">Year = {{ $year }}</span>
-            @else
-                <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">Year = None</span>
-            @endif
-        </p>
 
         <div class="table-responsive">
             <table class="table table-hover align-middle">

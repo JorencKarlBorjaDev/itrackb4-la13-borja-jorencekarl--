@@ -38,7 +38,7 @@ class BookController extends Controller
 
         $sort = $request->query('sort', 'title');
 
-        if (!in_array($sort, ['title', 'year'])) {
+        if (! in_array($sort, ['title', 'year'])) {
         $sort = 'title';
         }
 
