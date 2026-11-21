@@ -60,3 +60,17 @@ J1. I used a HomeController because the homepage only displays a summary of the 
 J2. It keeps my search, filter, and sorting values when I move to another page. Without it, those values disappear when I click the pagination links.
 
 J3. I used a whitelist to allow only title and year as sorting options. This prevents invalid values from the URL from causing errors, and it uses title sorting as the default.
+
+Lab 14
+
+F1. In this lesson, I learned how to register, log in, and log out users in my My Book Library project. What is still missing is authorization, where I can control what each user is allowed to do based on their role or permissions.
+
+F2. I used `session()->regenerate()` after a successful login to create a new session ID for the user. This helps protect my Book Library from session fixation attacks, where someone might try to use another person's session.
+
+F3. I used the same error message so that strangers cannot easily know whether an email is registered in my Book Library. This helps protect the privacy and security of my users.
+
+F4. I kept the book list and book details public so visitors can browse the books even without an account. However, I required users to log in before they can add, edit, update, or delete books.
+
+F5. Hiding the Add, Edit, and Delete buttons is not enough because a stranger can still try to access those pages using their URL. In my project, the `auth` middleware protects those routes and redirects guests to the login page.
+
+F6. The auth middleware uses the route named `login` to know where to redirect users who are not logged in. If I use the wrong route name, Laravel cannot find the login page and shows a route error instead.

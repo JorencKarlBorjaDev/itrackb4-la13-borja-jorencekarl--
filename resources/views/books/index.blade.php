@@ -9,10 +9,10 @@
 
     <div class="card-body p-4">
 
-
+        @auth
         <a href="{{ route('books.create') }}" class="btn btn-primary mb-3">+ Add Book</a>
-
-       
+        @endauth
+        
         <form method="GET" action="{{ route('books.index') }}" class="row g-2 mb-4">
 
             <div class="col-md-3">
@@ -78,7 +78,9 @@
                         <th scope="col" class="py-3">Year</th>
                         <th scope="col" class="py-3">Genre</th>
                         <th scope="col" class="py-3">Availability</th>
+                        @auth
                         <th scope="col" class="py-3">Actions</th>
+                        @endauth
                     </tr>
                 </thead>
 
@@ -118,6 +120,7 @@
                                 @endif
                             </td>
 
+                            @auth
                             <td>
                                 <div class="d-flex gap-1">
 
@@ -137,6 +140,7 @@
 
                                 </div>
                             </td>
+                            @endauth
                         </tr>
 
                     @empty

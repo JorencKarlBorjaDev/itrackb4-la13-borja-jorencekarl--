@@ -10,8 +10,8 @@
         </button>
 
         <div class="collapse navbar-collapse" id="mainNav">
-            <ul class="navbar-nav">
 
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
                        href="{{ route('home') }}">Home</a>
@@ -21,8 +21,35 @@
                     <a class="nav-link {{ request()->routeIs('books.*') ? 'active' : '' }}"
                        href="{{ route('books.index') }}">Books</a>
                 </li>
-
             </ul>
+
+            @guest
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    </li>
+                </ul>
+            @endguest
+
+            @auth
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <span class="nav-link">
+                            {{ Auth::user()->name }}
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="nav-link btn btn-link text-white text-decoration-none p-2">Log out</button>
+                        </form>
+                    </li>
+                </ul>
+            @endauth
+
         </div>
     </div>
 </nav>
